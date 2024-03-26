@@ -13,7 +13,7 @@ document.getElementById("call-me-button").addEventListener("click", function () 
 
 // Start events on click close-button
 document.getElementById("close-button").addEventListener("click", function () {
-   fromStart()
+
    // Show Call Me button again
    document.getElementById("call-me-button").style.display = "block";
    // Hide close button
@@ -26,8 +26,8 @@ document.getElementById("close-button").addEventListener("click", function () {
 
 function showMessages() {
    let messages = document.querySelectorAll(".robot-message");
-   let delay = 1000; // 1 секунда
-   let currentIndex = -1; // Почати з -1, щоб показати перше повідомлення
+   let delay = 4000; // 4 seconds
+   let currentIndex = -1; // Start with the first message
 
    function showOneMessage() {
       if (currentIndex >= 0) {
@@ -36,27 +36,15 @@ function showMessages() {
 
       currentIndex++;
       if (currentIndex >= messages.length) {
-         currentIndex = 0; // Повторювати повідомлення, якщо кінець
+         currentIndex = 0;
       }
 
       let container = document.querySelector(".messages-container");
       let currentMessage = messages[currentIndex];
       container.prepend(currentMessage);
       currentMessage.classList.add("active");
-      setTimeout(showOneMessage, delay); // Показати наступне повідомлення після затримки
+      setTimeout(showOneMessage, delay); // Show the next message after the delay
    }
 
    showOneMessage();
-}
-
-function fromStart() {
-   document.querySelector(".messages-container").innerHTML = "";
-   document.querySelector(".robot-message").classList.remove("active");
-   document.querySelector(".robot-message").classList.remove("active");
-   document.getElementById("call-me-button").style.display = "block";
-   document.getElementById("close-button").style.display = "none";
-   document.querySelector(".robot-popup-container").classList.remove("active");
-   document.querySelector(".robot-popup").classList.remove("active");
-
-
 }
