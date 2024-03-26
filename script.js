@@ -35,3 +35,44 @@ document.getElementById("close-button").addEventListener("click", function () {
       document.querySelector(".robot-message").style.display = "none";
    }
 });
+
+let currentMessageIndex = 0;
+let messages = document.querySelectorAll(".robot-message");
+
+function showMessages() {
+   let messages = document.querySelectorAll(".robot-message");
+   // Time to show message
+   let delay = 3000; // 3 seconds
+   let currentIndex = -1; // Start from -1 to show first message
+
+   function showMessage() {
+      // Hide messages
+      for (var i = 0; i < messages.length; i++) {
+         messages[i].classList.remove("active");
+      }
+
+      // Update current message index
+      currentIndex++;
+      if (currentIndex >= messages.length) {
+         currentIndex = 0; // Repeat messages if end
+      }
+
+      // Move current message to the beginning of the container
+
+      let container = document.querySelector(".messages-container");
+      let currentMessage = messages[currentIndex];
+      container.prepend(currentMessage);
+
+      // Show current message
+      currentMessage.classList.add("active");
+
+      setTimeout(showMessage, delay); // Show next message after set delay
+   }
+
+   showMessage(); // Start showing messages
+}
+
+document.getElementById("call-me-button").addEventListener("click", function () {
+
+   showMessages(); // Start showing messages
+});
