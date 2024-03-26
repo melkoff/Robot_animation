@@ -42,7 +42,7 @@ let messages = document.querySelectorAll(".robot-message");
 function showMessages() {
    let messages = document.querySelectorAll(".robot-message");
    // Time to show message
-   let delay = 3000; // 3 seconds
+   let delay = 4000; // 4 seconds
    let currentIndex = -1; // Start from -1 to show first message
 
    function showMessage() {
